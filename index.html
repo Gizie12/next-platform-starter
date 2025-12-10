@@ -1,0 +1,1363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Horn Polity Forum – Political Science of Ethiopia & the Horn</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content="Horn Polity Forum – a political science platform focused on Ethiopia and the Horn of Africa: blogs, short articles, research notes, and debates."
+  />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap"
+    rel="stylesheet"
+  />
+  <style>
+    :root {
+      --bg: #050816;
+      --bg-elevated: #0b1020;
+      --accent: #f97316;
+      --accent-soft: rgba(249, 115, 22, 0.08);
+      --accent-strong: rgba(249, 115, 22, 0.16);
+      --text: #f9fafb;
+      --muted: #9ca3af;
+      --border: #1f2937;
+      --danger: #ef4444;
+      --shadow-soft: 0 18px 45px rgba(0, 0, 0, 0.45);
+      --radius-lg: 18px;
+      --radius-xl: 26px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: radial-gradient(circle at top, #111827 0, #020617 45%, #000 100%);
+      color: var(--text);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px 16px 60px;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 12px 18px;
+      margin-bottom: 24px;
+      background: linear-gradient(to right, #020617, #020617f0);
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.15);
+      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.7);
+      position: sticky;
+      top: 12px;
+      z-index: 20;
+      backdrop-filter: blur(16px);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      white-space: nowrap;
+    }
+
+    .logo-mark {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 30%, #fed7aa, #f97316, #7c2d12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 12px 30px rgba(248, 113, 22, 0.75);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .logo-mark::after {
+      content: "";
+      position: absolute;
+      width: 80%;
+      height: 80%;
+      border-radius: 40% 60% 70% 30%;
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      opacity: 0.45;
+    }
+
+    .logo-mark span {
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      color: #0b1020;
+    }
+
+    .logo-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .logo-text-main {
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
+      letter-spacing: 0.04em;
+    }
+
+    .logo-text-sub {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--muted);
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-size: 13px;
+    }
+
+    nav button,
+    .btn {
+      border: none;
+      cursor: pointer;
+      font-family: inherit;
+    }
+
+    .nav-link {
+      padding: 6px 10px;
+      border-radius: 999px;
+      color: var(--muted);
+      background: transparent;
+      border: 1px solid transparent;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .nav-link.active,
+    .nav-link:hover {
+      color: var(--text);
+      background: rgba(15, 23, 42, 0.8);
+      border-color: rgba(148, 163, 184, 0.4);
+    }
+
+    .btn-primary {
+      padding: 7px 14px;
+      border-radius: 999px;
+      background: linear-gradient(to right, #f97316, #fb923c);
+      color: #111827;
+      font-weight: 600;
+      font-size: 13px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 12px 35px rgba(248, 113, 22, 0.6);
+    }
+
+    .btn-primary span.icon {
+      font-size: 14px;
+    }
+
+    /* Layout */
+    main {
+      display: grid;
+      grid-template-columns: minmax(0, 2.1fr) minmax(0, 1.4fr);
+      gap: 24px;
+    }
+
+    @media (max-width: 950px) {
+      header {
+        flex-wrap: wrap;
+        border-radius: 18px;
+        align-items: flex-start;
+      }
+
+      main {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    @media (max-width: 640px) {
+      header {
+        flex-direction: column;
+      }
+    }
+
+    .card {
+      background: radial-gradient(circle at top left, #111827, #020617);
+      border-radius: var(--radius-xl);
+      border: 1px solid rgba(31, 41, 55, 0.85);
+      box-shadow: var(--shadow-soft);
+      padding: 20px 20px 22px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: -40%;
+      background:
+        radial-gradient(circle at 0% 0%, rgba(249, 115, 22, 0.12), transparent 55%),
+        radial-gradient(circle at 100% 100%, rgba(30, 64, 175, 0.22), transparent 52%);
+      opacity: 0.6;
+      pointer-events: none;
+    }
+
+    .card-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .eyebrow {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--muted);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.78);
+      border: 1px solid rgba(55, 65, 81, 0.9);
+    }
+
+    .eyebrow span.dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: #22c55e;
+      box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.3);
+    }
+
+    .hero-title {
+      margin-top: 14px;
+      font-family: 'Playfair Display', serif;
+      font-size: 32px;
+      line-height: 1.2;
+      letter-spacing: 0.02em;
+    }
+
+    .hero-highlight {
+      background: linear-gradient(to right, #f97316, #facc15);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .hero-body {
+      margin-top: 10px;
+      font-size: 14px;
+      line-height: 1.6;
+      color: var(--muted);
+    }
+
+    .hero-tags {
+      margin-top: 14px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      font-size: 11px;
+    }
+
+    .tag {
+      padding: 5px 10px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(75, 85, 99, 0.8);
+      color: #e5e7eb;
+    }
+
+    .hero-cta {
+      margin-top: 16px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .btn-ghost {
+      padding: 7px 14px;
+      border-radius: 999px;
+      border: 1px dashed rgba(148, 163, 184, 0.65);
+      background: rgba(15, 23, 42, 0.85);
+      color: var(--muted);
+      font-size: 13px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .stat-row {
+      margin-top: 18px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .stat {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .stat strong {
+      font-size: 14px;
+      color: var(--text);
+    }
+
+    /* Latest posts */
+    .section-title {
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--muted);
+      margin-bottom: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .pill {
+      padding: 3px 9px;
+      border-radius: 999px;
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      font-size: 10px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+    }
+
+    .posts-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 4px;
+    }
+
+    .post-item {
+      border-radius: 16px;
+      padding: 10px 12px;
+      background: linear-gradient(to right, rgba(15, 23, 42, 0.98), rgba(15, 23, 42, 0.9));
+      border: 1px solid rgba(31, 41, 55, 1);
+      display: flex;
+      gap: 12px;
+      cursor: pointer;
+      transition: transform 0.12s ease, box-shadow 0.12s ease, border-color 0.12s ease, background 0.12s ease;
+    }
+
+    .post-item:hover {
+      transform: translateY(-1px);
+      border-color: rgba(148, 163, 184, 0.7);
+      box-shadow: 0 10px 25px rgba(15, 23, 42, 0.8);
+      background: linear-gradient(to right, rgba(15, 23, 42, 0.98), rgba(15, 23, 42, 0.94));
+    }
+
+    .post-meta {
+      font-size: 11px;
+      color: var(--muted);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      align-items: center;
+    }
+
+    .post-meta span.badge {
+      padding: 2px 7px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+    }
+
+    .post-title {
+      margin-top: 4px;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .post-excerpt {
+      margin-top: 3px;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .post-right {
+      margin-left: auto;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 4px;
+      font-size: 10px;
+      color: var(--muted);
+      text-align: right;
+    }
+
+    .post-tag-icon {
+      font-size: 16px;
+    }
+
+    /* Sidebar: newsletter + membership */
+    .sidebar-card {
+      background: radial-gradient(circle at top right, #111827, #020617);
+      border-radius: var(--radius-xl);
+      border: 1px solid rgba(31, 41, 55, 0.9);
+      padding: 18px 18px 20px;
+      box-shadow: var(--shadow-soft);
+      margin-bottom: 16px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .sidebar-card::before {
+      content: "";
+      position: absolute;
+      inset: -40%;
+      background:
+        radial-gradient(circle at 80% 0%, rgba(249, 115, 22, 0.16), transparent 60%),
+        radial-gradient(circle at 0% 80%, rgba(30, 64, 175, 0.2), transparent 58%);
+      opacity: 0.6;
+      pointer-events: none;
+    }
+
+    .sidebar-card .content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .sidebar-title {
+      font-size: 15px;
+      font-weight: 600;
+      margin-bottom: 5px;
+    }
+
+    .sidebar-body {
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+
+    .input-row {
+      display: flex;
+      gap: 8px;
+      margin-top: 8px;
+      flex-wrap: wrap;
+    }
+
+    .input {
+      flex: 1 1 160px;
+      padding: 8px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      background: rgba(15, 23, 42, 0.95);
+      color: var(--text);
+      font-size: 12px;
+    }
+
+    .input:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 1px rgba(249, 115, 22, 0.4);
+    }
+
+    .sidebar-footnote {
+      margin-top: 8px;
+      font-size: 10px;
+      color: var(--muted);
+    }
+
+    .membership-tiers {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 6px;
+    }
+
+    @media (max-width: 700px) {
+      .membership-tiers {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .tier {
+      border-radius: 14px;
+      padding: 10px 11px;
+      background: rgba(15, 23, 42, 0.96);
+      border: 1px solid rgba(55, 65, 81, 0.95);
+      font-size: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .tier-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--muted);
+    }
+
+    .tier-price {
+      font-size: 15px;
+      font-weight: 600;
+    }
+
+    .tier-benefits {
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .tier button {
+      margin-top: 5px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      border: 1px solid rgba(249, 115, 22, 0.5);
+      color: #fed7aa;
+      font-size: 11px;
+      cursor: pointer;
+    }
+
+    .tier button:hover {
+      background: var(--accent-strong);
+    }
+
+    .secure-note {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 10px;
+      color: var(--muted);
+      margin-top: 6px;
+    }
+
+    .secure-dot {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+    }
+
+    /* Article & comments */
+    .article-card {
+      margin-top: 18px;
+      border-radius: var(--radius-xl);
+      border: 1px solid rgba(31, 41, 55, 1);
+      background: radial-gradient(circle at top left, #020617, #020617);
+      padding: 18px 18px 18px;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .article-meta {
+      font-size: 11px;
+      color: var(--muted);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 6px;
+      align-items: center;
+    }
+
+    .article-meta span.badge {
+      padding: 2px 7px;
+      border-radius: 999px;
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      font-size: 10px;
+    }
+
+    .article-title {
+      font-size: 20px;
+      font-family: 'Playfair Display', serif;
+      margin: 4px 0 6px;
+    }
+
+    .article-body {
+      font-size: 13px;
+      line-height: 1.7;
+      color: #e5e7eb;
+    }
+
+    .article-body p {
+      margin: 7px 0;
+    }
+
+    .article-body p.lead {
+      font-size: 13.5px;
+      color: #e5e7eb;
+    }
+
+    .article-body .quote {
+      margin: 10px 0;
+      padding-left: 10px;
+      border-left: 2px solid rgba(148, 163, 184, 0.5);
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .article-footer {
+      margin-top: 10px;
+      font-size: 11px;
+      color: var(--muted);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: space-between;
+    }
+
+    .comments {
+      margin-top: 16px;
+      border-top: 1px solid rgba(31, 41, 55, 1);
+      padding-top: 12px;
+    }
+
+    .comments-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+
+    .comments-title {
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .comments-count {
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .comment-form {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+
+    .comment-form-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .comment-input,
+    .comment-textarea {
+      padding: 7px 10px;
+      border-radius: 10px;
+      border: 1px solid rgba(55, 65, 81, 0.95);
+      background: rgba(15, 23, 42, 0.98);
+      color: var(--text);
+      font-size: 12px;
+      flex: 1 1 150px;
+    }
+
+    .comment-textarea {
+      min-height: 60px;
+      resize: vertical;
+    }
+
+    .comment-input:focus,
+    .comment-textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 1px rgba(249, 115, 22, 0.5);
+    }
+
+    .btn-comment {
+      align-self: flex-start;
+      padding: 7px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.9);
+      background: rgba(15, 23, 42, 0.96);
+      color: var(--text);
+      font-size: 12px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .btn-comment:hover {
+      border-color: var(--accent);
+      color: #fed7aa;
+    }
+
+    .comment-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .comment {
+      border-radius: 12px;
+      padding: 8px 10px;
+      background: rgba(15, 23, 42, 0.95);
+      border: 1px solid rgba(31, 41, 55, 1);
+      font-size: 12px;
+    }
+
+    .comment-author {
+      font-weight: 500;
+      font-size: 12px;
+      margin-bottom: 3px;
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    .comment-date {
+      font-size: 10px;
+      color: var(--muted);
+    }
+
+    .comment-body {
+      font-size: 12px;
+      color: #e5e7eb;
+    }
+
+    /* Membership form */
+    .membership-form {
+      margin-top: 10px;
+      border-radius: 16px;
+      padding: 12px;
+      background: rgba(15, 23, 42, 0.96);
+      border: 1px dashed rgba(55, 65, 81, 0.9);
+      font-size: 12px;
+    }
+
+    .membership-form h3 {
+      margin: 0 0 6px;
+      font-size: 13px;
+    }
+
+    .membership-form-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+
+    @media (max-width: 600px) {
+      .membership-form-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .membership-select {
+      width: 100%;
+      padding: 8px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(55, 65, 81, 0.95);
+      background: rgba(15, 23, 42, 0.98);
+      color: var(--text);
+      font-size: 12px;
+    }
+
+    .membership-select:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 1px rgba(249, 115, 22, 0.5);
+    }
+
+    .btn-pay {
+      margin-top: 4px;
+      padding: 7px 14px;
+      border-radius: 999px;
+      border: none;
+      background: linear-gradient(to right, #22c55e, #4ade80);
+      color: #052e16;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .btn-pay span.icon {
+      font-size: 14px;
+    }
+
+    .payment-note {
+      margin-top: 6px;
+      font-size: 10px;
+      color: var(--muted);
+    }
+
+    footer {
+      margin-top: 26px;
+      padding-top: 16px;
+      border-top: 1px solid rgba(31, 41, 55, 1);
+      font-size: 11px;
+      color: var(--muted);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: space-between;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      font-size: 11px;
+    }
+
+    .footer-links a:hover {
+      color: #e5e7eb;
+    }
+
+    .alert {
+      margin-top: 6px;
+      font-size: 11px;
+      color: #facc15;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <div class="logo">
+        <div class="logo-mark">
+          <span>HP</span>
+        </div>
+        <div class="logo-text">
+          <div class="logo-text-main">Horn Polity Forum</div>
+          <div class="logo-text-sub">Ethiopia • Horn • Political Science</div>
+        </div>
+      </div>
+      <nav>
+        <button class="nav-link active" type="button" onclick="scrollToSection('top')">
+          Home
+        </button>
+        <button class="nav-link" type="button" onclick="scrollToSection('articles')">
+          Articles
+        </button>
+        <button class="nav-link" type="button" onclick="scrollToSection('membership')">
+          Membership
+        </button>
+        <button class="nav-link" type="button" onclick="scrollToSection('subscribe')">
+          Newsletter
+        </button>
+        <button class="btn-primary" type="button" onclick="scrollToSection('membership')">
+          <span class="icon">★</span>
+          Join as Member
+        </button>
+      </nav>
+    </header>
+
+    <main id="top">
+      <!-- Left column: hero + articles -->
+      <section>
+        <div class="card">
+          <div class="card-content">
+            <div class="eyebrow">
+              <span class="dot"></span>
+              Independent Political Analysis • Ethiopia & the Horn
+            </div>
+            <h1 class="hero-title">
+              A research-driven space for
+              <span class="hero-highlight">critical debate on power, institutions, and conflict</span>
+              in Ethiopia and the Horn of Africa.
+            </h1>
+            <p class="hero-body">
+              Horn Polity Forum brings together short analytical essays, fieldwork reflections, and
+              data-informed commentary on transitions, authoritarian resilience, democratic masks, and
+              regional security politics in the Horn. Publish your own insights, invite debate in the
+              comments, and build a specialized community of readers and practitioners.
+            </p>
+            <div class="hero-tags">
+              <span class="tag">Democratic Mask Regimes</span>
+              <span class="tag">Elite Co-optation</span>
+              <span class="tag">Oromo & Amhara Politics</span>
+              <span class="tag">Horn Security & Peace</span>
+            </div>
+            <div class="hero-cta">
+              <button class="btn-primary" type="button" onclick="scrollToSection('articles')">
+                <span class="icon">▸</span>
+                Read latest analysis
+              </button>
+              <button class="btn-ghost" type="button" onclick="scrollToSection('membership')">
+                Become a contributing author
+              </button>
+            </div>
+            <div class="stat-row">
+              <div class="stat">
+                <strong>Research-oriented</strong>
+                <span>Designed for scholars, students, journalists, and practitioners.</span>
+              </div>
+              <div class="stat">
+                <strong>Horn-centric</strong>
+                <span>Focused on Ethiopia, Somalia, Sudan, Eritrea, Djibouti & Kenya.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Latest posts -->
+        <div id="articles" class="article-card">
+          <div class="section-title">
+            <span>Latest Essays & Short Notes</span>
+            <span class="pill">Sample list – replace with your posts</span>
+          </div>
+          <div class="posts-list">
+            <article class="post-item" onclick="openSampleArticle()">
+              <div>
+                <div class="post-meta">
+                  <span class="badge">Ethiopia</span>
+                  <span>Dec 9, 2025</span>
+                  <span>• 9 min read</span>
+                </div>
+                <div class="post-title">
+                  From Protest to “Reform”: Reading Ethiopia’s 2014–2018 Transition as a Democratic Mask
+                </div>
+                <div class="post-excerpt">
+                  A closer look at how elite bargains, legal engineering, and security-sector leverage
+                  converted popular mobilisation into an authoritarian re-consolidation project.
+                </div>
+              </div>
+              <div class="post-right">
+                <span class="post-tag-icon">➜</span>
+                <span>Click to view sample article</span>
+              </div>
+            </article>
+
+            <article class="post-item">
+              <div>
+                <div class="post-meta">
+                  <span class="badge">Horn Region</span>
+                  <span>Dec 3, 2025</span>
+                  <span>• 6 min read</span>
+                </div>
+                <div class="post-title">
+                  AU Norms at the Gate: Silence, Consent, and the Amhara Crisis
+                </div>
+                <div class="post-excerpt">
+                  How the African Union’s proximity to Ethiopian politics shapes its conflict response
+                  – and what this reveals about host-state leverage over continental institutions.
+                </div>
+              </div>
+            </article>
+
+            <article class="post-item">
+              <div>
+                <div class="post-meta">
+                  <span class="badge">Theory</span>
+                  <span>Nov 25, 2025</span>
+                  <span>• 8 min read</span>
+                </div>
+                <div class="post-title">
+                  Democratic Mask Regimes: When Elections Legitimate Authoritarian Rule
+                </div>
+                <div class="post-excerpt">
+                  Situating African “electoral autocracies” within a broader typology of democratic
+                  masking, with particular reference to Ethiopia, Uganda, and Rwanda.
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <!-- Sample full article and comments -->
+          <article id="sample-article" class="article-card" style="margin-top: 14px; display: none;">
+            <div class="article-meta">
+              <span class="badge">Ethiopia</span>
+              <span>Dec 9, 2025</span>
+              <span>• 9 min read</span>
+              <span>Author: Horn Polity Forum</span>
+            </div>
+            <h2 class="article-title">
+              From Protest to “Reform”: Reading Ethiopia’s 2014–2018 Transition as a Democratic Mask
+            </h2>
+            <div class="article-body">
+              <p class="lead">
+                This sample article illustrates how your essays will appear on Horn Polity Forum.
+                Replace this text with your own analysis on Ethiopian and Horn politics.
+              </p>
+              <p>
+                The Oromo-led protests that unfolded from 2014 to 2018 did not merely challenge a specific
+                masterplan or localised land-grabbing: they destabilised the wider architecture of
+                party-state domination in Ethiopia. Yet, the transition they precipitated did not yield a
+                robust democratic opening. Instead, it can be read as a paradigmatic example of a
+                <em>democratic mask regime</em>, in which reformist rhetoric, legal revisions, and
+                carefully staged elections worked together to re-inscribe executive control.
+              </p>
+              <p class="quote">
+                Use this area to weave together empirical evidence (arrests, casualties, legal changes,
+                party restructurings) and theoretical lenses on authoritarian resilience, democratic
+                backsliding, and elite co-optation.
+              </p>
+              <p>
+                As you publish more posts, you can tag them by country, theme, and method. Readers can
+                leave comments below, and members can gain access to extended datasets, fieldwork notes,
+                or draft chapters.
+              </p>
+            </div>
+            <div class="article-footer">
+              <span>Filed under: Protest, Transition, Democratic Mask Regimes</span>
+              <span>Share: X / Facebook / Email</span>
+            </div>
+
+            <!-- Comments -->
+            <div class="comments">
+              <div class="comments-header">
+                <div>
+                  <div class="comments-title">Comments</div>
+                  <div class="comments-count" id="comment-count">
+                    2 comments • Join the discussion
+                  </div>
+                </div>
+              </div>
+
+              <!-- Comment form -->
+              <form class="comment-form" onsubmit="submitComment(event)">
+                <div class="comment-form-row">
+                  <input
+                    class="comment-input"
+                    type="text"
+                    name="name"
+                    id="comment-name"
+                    placeholder="Your name"
+                    required
+                  />
+                  <input
+                    class="comment-input"
+                    type="email"
+                    name="email"
+                    id="comment-email"
+                    placeholder="Email (won’t be published)"
+                    required
+                  />
+                </div>
+                <textarea
+                  class="comment-textarea"
+                  name="comment"
+                  id="comment-text"
+                  placeholder="Add your comment – be substantive, respectful, and evidence-aware."
+                  required
+                ></textarea>
+                <button class="btn-comment" type="submit">
+                  <span>Post comment</span> <span>↩</span>
+                </button>
+                <div id="comment-alert" class="alert" style="display: none;">
+                  (Front-end only) Comment captured in the browser. Connect this form to your backend
+                  or a service like Disqus to store and display comments globally.
+                </div>
+              </form>
+
+              <!-- Existing comments (static examples) -->
+              <div id="comment-list" class="comment-list">
+                <div class="comment">
+                  <div class="comment-author">
+                    <span>Selam – PhD candidate, Addis Ababa</span>
+                    <span class="comment-date">Dec 9, 2025</span>
+                  </div>
+                  <div class="comment-body">
+                    I like the framing of a “democratic mask regime”. It helps explain why reforms
+                    were so discursively ambitious but institutionally shallow.
+                  </div>
+                </div>
+                <div class="comment">
+                  <div class="comment-author">
+                    <span>Moses – Researcher, Nairobi</span>
+                    <span class="comment-date">Dec 9, 2025</span>
+                  </div>
+                  <div class="comment-body">
+                    Would be useful to compare this to Kenya’s 2007–2010 period and the way
+                    constitutional reform co-existed with continuity in elite coalitions.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <!-- Membership registration & payment -->
+        <div id="membership" class="membership-form">
+          <h3>Membership & Author Registration</h3>
+          <p>
+            Register as a <strong>member</strong> to support the platform, receive extended content,
+            and optionally publish your own essays.
+          </p>
+          <div class="membership-form-grid">
+            <input
+              class="input"
+              type="text"
+              id="member-name"
+              placeholder="Full name"
+              required
+            />
+            <input
+              class="input"
+              type="email"
+              id="member-email"
+              placeholder="Email address"
+              required
+            />
+            <input
+              class="input"
+              type="text"
+              id="member-affiliation"
+              placeholder="Affiliation (e.g., University, NGO, Journalist)"
+            />
+            <select class="membership-select" id="member-tier">
+              <option value="reader">Reader – Free</option>
+              <option value="supporter">Supporter – $5 / month</option>
+              <option value="researcher">Research Circle – $12 / month</option>
+            </select>
+          </div>
+          <button class="btn-pay" type="button" onclick="simulatePayment()">
+            <span class="icon">✓</span> Proceed to secure payment
+          </button>
+          <p class="payment-note">
+            This is currently a front-end placeholder. Connect this button to a payment provider
+            (e.g., Stripe, PayPal) in your backend to process real membership fees.
+          </p>
+        </div>
+      </section>
+
+      <!-- Right column: newsletter + membership tiers -->
+      <aside>
+        <!-- Newsletter subscription -->
+        <div id="subscribe" class="sidebar-card">
+          <div class="content">
+            <div class="sidebar-title">Horn Polity Bulletin</div>
+            <p class="sidebar-body">
+              Receive curated essays, research notes, and reading lists on Ethiopia and the Horn –
+              carefully filtered for empirical depth and conceptual clarity.
+            </p>
+            <form onsubmit="subscribeNewsletter(event)">
+              <div class="input-row">
+                <input
+                  class="input"
+                  type="email"
+                  id="newsletter-email"
+                  placeholder="Email address"
+                  required
+                />
+                <button class="btn-primary" type="submit">
+                  <span class="icon">✉</span>
+                  Subscribe
+                </button>
+              </div>
+              <div id="newsletter-alert" class="alert" style="display: none;">
+                Subscription stored locally. Connect this form to a service (Mailchimp, Buttondown,
+                etc.) to manage real mailing lists.
+              </div>
+            </form>
+            <div class="sidebar-footnote">
+              Low-volume, high-quality updates. No spam. You can integrate your preferred email
+              service later.
+            </div>
+          </div>
+        </div>
+
+        <!-- Membership tiers -->
+        <div class="sidebar-card">
+          <div class="content">
+            <div class="sidebar-title">Membership Tiers</div>
+            <p class="sidebar-body">
+              Monetize your project gradually. Offer different access levels, while keeping core
+              debates open and accessible.
+            </p>
+            <div class="membership-tiers">
+              <div class="tier">
+                <div class="tier-label">Reader</div>
+                <div class="tier-price">Free</div>
+                <div class="tier-benefits">
+                  Access to public blog posts, comments, and basic newsletter.
+                </div>
+                <button type="button" onclick="selectTier('reader')">
+                  Choose Reader
+                </button>
+              </div>
+              <div class="tier">
+                <div class="tier-label">Supporter</div>
+                <div class="tier-price">$5 / month</div>
+                <div class="tier-benefits">
+                  Everything in Reader + exclusive essays and monthly reading notes.
+                </div>
+                <button type="button" onclick="selectTier('supporter')">
+                  Choose Supporter
+                </button>
+              </div>
+              <div class="tier">
+                <div class="tier-label">Research Circle</div>
+                <div class="tier-price">$12 / month</div>
+                <div class="tier-benefits">
+                  Draft chapters, datasets, and small-group seminars (once activated).
+                </div>
+                <button type="button" onclick="selectTier('researcher')">
+                  Join Research Circle
+                </button>
+              </div>
+              <div class="tier">
+                <div class="tier-label">Institutional</div>
+                <div class="tier-price">Custom</div>
+                <div class="tier-benefits">
+                  For departments, think-tanks, NGOs. Multi-user access and tailored content.
+                </div>
+                <button type="button" onclick="selectTier('institutional')">
+                  Contact for partnership
+                </button>
+              </div>
+            </div>
+            <div class="secure-note">
+              <span class="secure-dot">🔒</span>
+              <span>Integrate Stripe or PayPal in your backend for secure payments.</span>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </main>
+
+    <footer>
+      <div>© <span id="year"></span> Horn Polity Forum. All rights reserved.</div>
+      <div class="footer-links">
+        <a href="#top">About</a>
+        <a href="#membership">Membership</a>
+        <a href="#subscribe">Newsletter</a>
+        <a href="#top">Contact</a>
+        <a href="#top">Privacy & Terms</a>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    // Smooth scroll helper
+    function scrollToSection(id) {
+      const el = document.getElementById(id);
+      if (!el) return;
+      window.scrollTo({
+        top: el.getBoundingClientRect().top + window.scrollY - 80,
+        behavior: 'smooth'
+      });
+    }
+
+    // Open sample article view
+    function openSampleArticle() {
+      const article = document.getElementById('sample-article');
+      if (article) {
+        article.style.display = 'block';
+        scrollToSection('sample-article');
+      }
+    }
+
+    // Comments: simple front-end storage demo
+    function submitComment(event) {
+      event.preventDefault();
+      const name = document.getElementById('comment-name').value.trim();
+      const email = document.getElementById('comment-email').value.trim();
+      const text = document.getElementById('comment-text').value.trim();
+      if (!name || !email || !text) return;
+
+      const list = document.getElementById('comment-list');
+      const commentCount = document.getElementById('comment-count');
+      const alertEl = document.getElementById('comment-alert');
+
+      const now = new Date();
+      const dateString = now.toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: 'short',
+        day: 'numeric'
+      });
+
+      const div = document.createElement('div');
+      div.className = 'comment';
+      div.innerHTML = `
+        <div class="comment-author">
+          <span>${name}</span>
+          <span class="comment-date">${dateString}</span>
+        </div>
+        <div class="comment-body">${text}</div>
+      `;
+      list.prepend(div);
+
+      // Update count (simple increment, not robust parsing)
+      const currentText = commentCount.textContent || '';
+      const match = currentText.match(/(\d+)/);
+      let num = match ? parseInt(match[1], 10) + 1 : 1;
+      commentCount.textContent = num + ' comments • Join the discussion';
+
+      document.getElementById('comment-name').value = '';
+      document.getElementById('comment-email').value = '';
+      document.getElementById('comment-text').value = '';
+
+      alertEl.style.display = 'block';
+    }
+
+    // Newsletter subscription (front-end demo)
+    function subscribeNewsletter(event) {
+      event.preventDefault();
+      const emailInput = document.getElementById('newsletter-email');
+      const alertEl = document.getElementById('newsletter-alert');
+      if (!emailInput.value.trim()) return;
+      alertEl.style.display = 'block';
+      emailInput.value = '';
+    }
+
+    // Select membership tier from sidebar and sync with main form
+    function selectTier(tier) {
+      const select = document.getElementById('member-tier');
+      if (!select) return;
+      select.value = tier;
+      scrollToSection('membership');
+    }
+
+    // Payment simulation
+    function simulatePayment() {
+      const name = document.getElementById('member-name').value.trim();
+      const email = document.getElementById('member-email').value.trim();
+      const tier = document.getElementById('member-tier').value;
+      if (!name || !email) {
+        alert('Please fill in at least your name and email before proceeding.');
+        return;
+      }
+      alert(
+        'Demo only: in a real deployment, this button would redirect to a secure payment provider for the “' +
+        tier +
+        '” membership.'
+      );
+    }
+
+    // Footer year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
